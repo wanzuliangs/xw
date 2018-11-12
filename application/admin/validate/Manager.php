@@ -12,10 +12,11 @@ class Manager extends Validate
     ];
 
     protected $message  =   [
-        'name.require' => '帐号不能为空',
-        'name.min' => '帐号长度不能小于4位',
-        'name.unique' => '帐号已存在',
+        'account.require' => '帐号不能为空',
+        'account.min' => '帐号长度不能小于4位',
+        'account.unique' => '帐号已存在',
         'password.require'=>'密码不能为空',
         'password.min'=>'密码长度不能小于6位',
+        'repass.require' => '密码确认不能为空',
     ];
 }
