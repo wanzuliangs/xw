@@ -11,8 +11,13 @@ class Manager extends Controller
     public function add()
     {
         if (request()->isPost()) {
-        
-            var_dump(input('post.'));
+            $data = input('post.');
+            $validate = validate('Manager');
+            if (!$validate->check($data)) {
+                dump($validate->getError());
+            } else {
+                dump('验证通过');
+            }
             return;
         }
         return view();
