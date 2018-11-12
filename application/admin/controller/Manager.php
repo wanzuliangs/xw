@@ -6,6 +6,13 @@ use think\Controller;
 
 class Manager extends Controller
 {
+    public function index()
+    {
+        $adminList = db('admin')->paginate(2);;
+        $this->assign('adminList', $adminList);
+        return view();
+    }
+
     public function add()
     {
         if (request()->isPost()) {
@@ -19,9 +26,9 @@ class Manager extends Controller
                 $data['password'] = md5($data['password']);
                 // 插入数据
                 if (db('admin')->insert($data)) {
-                    $this->success('管理员添加成功!','add');
+                    $this->success('管理员添加成功!', 'add');
                 } else {
-                    $this->success('管理员添加失败!','add');
+                    $this->success('管理员添加失败!', 'add');
                 }
             }
             return;
