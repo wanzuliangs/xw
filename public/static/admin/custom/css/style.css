@@ -1,0 +1,33 @@
+/*
+作者：易风
+后台样式
+*/
+.layui-layout-admin .layui-side{left:0;}
+.ly-right-title{
+    background: -webkit-linear-gradient(#DDD, #EEE); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#DDD, #EEE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#DDD, #EEE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#DDD, #EEE); /* 标准的语法 */
+    height: 45px;
+    line-height: 45px;
+    box-shadow: 1px 0px 5px #AAA;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+/*公共样式*/
+.title{color:#555;font-size:1.1rem;line-height: 45px;}
+.title .actived{background: #fff;padding:0 10px;display: inline-block;}
+/*响应式*/
+/*左侧导航适配*/
+@media screen and (min-width: 400px) and (max-width: 760px){
+    .layui-layout-admin .layui-side{
+        left:-200px;
+        transition: left 1s;
+    }
+    .layui-body,.layui-layout-admin .layui-footer{
+        left:0px;
+        transition: left 1s;
+    }
+
+}
+
