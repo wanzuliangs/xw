@@ -11,7 +11,8 @@ class Manager extends Controller
     public function add()
     {
         if (request()->isPost()) {
-            echo '数据处理...';
+        
+            var_dump(input('post.'));
             return;
         }
         return view();
