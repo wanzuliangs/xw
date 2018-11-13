@@ -8,7 +8,7 @@ class Manager extends Controller
 {
     public function index()
     {
-        $adminList = db('admin')->paginate(2);;
+        $adminList = db('admin')->paginate(4);;
         $this->assign('adminList', $adminList);
         return view();
     }
@@ -72,6 +72,9 @@ class Manager extends Controller
 
     public function delete($id)
     {
+        if ($id == 1) {
+            $this->error('超级管理员不能删除');
+        }
         $res = db('admin')->where('id',$id)->delete();
         if ($res) {
             $this->success('删除管理员成功!','index');

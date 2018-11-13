@@ -28,8 +28,8 @@
     <tr>
         <td>{$vo.id}</td>
         <td>{$vo.account}</td>
-        <td>{$vo.state ? '正常' : '禁用' }</td>
-        <td><a class="layui-btn layui-btn-normal" href="{:url('manager/edit?id=' . $vo['id'])}">修改</a> <button class="layui-btn layui-btn-warm" onclick="location='{:url(\"manager/delete?id=" . $vo['id'] . "\")}'">删除</button></td>
+        <td>{$vo.state ? '<span class="layui-badge layui-bg-green">正常</span>' : '<span class="layui-badge">锁定</span>' }</td>
+        <td><a class="layui-btn layui-btn-normal" href="{:url('manager/edit?id=' . $vo['id'])}">修改</a> <a href="{:url('manager/delete',['id' => $vo.id])}" class="layui-btn layui-btn-warm del">删除</a></td>
     </tr>
     {/volist}
     </tbody>
@@ -46,6 +46,18 @@
 <script src="__ADMIN__/custom/js/admin.js"></script>
 <script>
 $(function() {
+        layui.use('layer', function(){
+            $('.del').click(function() {
+                var url = $(this).attr('href');
+                var layer = layui.layer;
+                layer.confirm('确定要删除吗?', {icon: 3, title:'温馨提示'}, function(index){
+                    //do something
+                    location = url;
+                    layer.close(index);
+                });
+                return false;
+            });
+        });
     $(window.parent.document).find('#rtitle').text($("title").text()) ;
 })
 </script>
