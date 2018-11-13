@@ -35,4 +35,11 @@ class Manager extends Controller
         }
         return view();
     }
+
+    public function edit($id)
+    {
+        $data = db('admin')->where('id',$id)->find();
+        $this->assign("data",$data);
+        return view();
+    }
 }
