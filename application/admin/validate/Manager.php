@@ -18,5 +18,10 @@ class Manager extends Validate
         'password.require'=>'密码不能为空',
         'password.min'=>'密码长度不能小于6位',
         'repass.require' => '密码确认不能为空',
+        'repass.confirm' => '两次密码输入不一致'
+    ];
+
+    protected $scene = [
+        'edit'  =>  ['password'],
     ];
 }

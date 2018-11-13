@@ -29,7 +29,7 @@
         <td>{$vo.id}</td>
         <td>{$vo.account}</td>
         <td>{$vo.state ? '正常' : '禁用' }</td>
-        <td><a class="layui-btn layui-btn-normal" href="{:url('manager/edit?id=' . $vo['id'])}">修改</a> <button class="layui-btn layui-btn-warm" onclick="location='{:url(\"manager/delete?id=" + $vo["id"] . "\")}'">删除</button></td>
+        <td><a class="layui-btn layui-btn-normal" href="{:url('manager/edit?id=' . $vo['id'])}">修改</a> <button class="layui-btn layui-btn-warm" onclick="location='{:url(\"manager/delete?id=" . $vo['id'] . "\")}'">删除</button></td>
     </tr>
     {/volist}
     </tbody>
