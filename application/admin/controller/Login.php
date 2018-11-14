@@ -32,4 +32,13 @@ class Login extends Controller
         }
         return view();
     }
+
+    /**
+     * 登陆退出
+     */
+    public function logout()
+    {
+        session(null,'admin');
+        $this->redirect('index');
+    }
 }
