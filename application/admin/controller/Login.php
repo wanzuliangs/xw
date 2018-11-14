@@ -25,6 +25,11 @@ class Login extends Controller
             session('loginid',$info['id'],'admin');
             $this->success('登陆成功!','index/index');
         }
+        // 解决重复登陆问题
+        if (session('loginname','','admin') && session('loginid','','admin'))
+        {
+            $this->redirect('index/index');
+        }
         return view();
     }
 }
