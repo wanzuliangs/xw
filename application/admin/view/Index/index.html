@@ -37,25 +37,27 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
 
                 <li class="layui-nav-item">
-                    <a href="javascript:;" >用户管理</a>
+                    <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="{:url('manager/add')}" target="_content">添加管理员</a></dd>
                         <dd><a href="{:url('manager/index')}" target="_content">管理员列表</a></dd>
                     </dl>
                 </li>
 
-                <li class="layui-nav-item"><a href="./config.html" target="_content">网站配置</a></li>
+                <li class="layui-nav-item"><a href="system.html" target="_content">网站配置</a></li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body" id="layui-body" style="overflow: hidden;">
         <!-- 内容主体区域 -->
-        <div class="title ly-right-title"><span class="actived"><i class="layui-icon">&#xe68e;</i> <font id="rtitle">基本信息</font></span></div>
-        <iframe id="_content" name="_content" src="config.html" scrolling="yes" frameborder="no" width="100%" height="100%"></iframe>
+        <div class="title ly-right-title"><span class="actived"><i class="layui-icon">&#xe68e;</i> <font id="rtitle">基本信息</font></span>
+        </div>
+        <iframe id="_content" name="_content" src="{:url('Index/system')}" scrolling="yes" frameborder="no" width="100%"
+                height="100%"></iframe>
     </div>
 
     <div class="layui-footer">
@@ -68,7 +70,7 @@
 <script src="__ADMIN__/custom/js/admin.js"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
 
     });
