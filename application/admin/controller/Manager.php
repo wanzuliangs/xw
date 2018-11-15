@@ -51,13 +51,13 @@ class Manager extends Common
                 if (!$validate->scene('edit')->check($data)) {
                     $this->error($validate->getError());
                 }
+                $data['password'] = md5($data['password']);
             }
-            $data['password'] = md5($data['password']);
             unset($data['repass']);
             if ($data['state'] == '0' && $id == '1') {
                 $this->error('超级管理员admin状态不允许禁用!');
             }
-            $result = db('admin')->where('id', $id)->update($data);
+            $result = db('admin')->where('id = ' . $id)->update($data);
             if ($result) {
                 $this->success('数据更新成功', 'index');
             } else {
