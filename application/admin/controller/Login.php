@@ -11,16 +11,24 @@ class Login extends Controller
         if (request()->isPost()) {
             $data = input('post.');
             $res = $this->checkLogin($data);
-//            if (isset($res['aid'])) {
-//                $logInfo = array(
-//                    'uid' => $res['aid'],
-//                    'ip' => request()->ip(),
-//                    'logintime' => time(),
-//                    'msg' => $res['msg'],
-//                );
-//                db('log')->insert($logInfo);
-//            }
-            if ($res['code'] == 1) {
+            if (isset($res['aid'])) {
+                $logInfo = array(
+                    'uid' => $res['aid'],
+                    'ip' => request()->ip(),
+                    'logintime' => time(),
+                    'msg' => $res['msg'],
+                );
+                db('log')->insert($logInfo);
+                // 同ip管理员登陆次数
+                $logscount = db('log')->where('uid',$res['aid'])->count();
+                // 同ip管理员登陆次数超过30次时的最早登陆时的id
+                $logsmin_time = db('log')->where('uid',$res['aid'])->min('logintime');
+                // 同ip管理员登陆次数大于30次时删除时间最早的日志记录
+                if ($logscount > 30) {
+                    db('log')->where('uid',$res['aid'])->where('logintime',$logsmin_time)->delete();
+                }
+            }
+            if ($res['code']) {
                 $this->success($res['msg'], 'index/index');
             }
             $this->error($res['msg']);

@@ -89,21 +89,17 @@
         <div class="layui-colla-content">
             <table class="layui-table">
                 <tr>
-                    <td width="40%">PHP版本</td>
-                    <td width="60%"></td>
+                    <td width="20%">登陆IP</td>
+                    <td width="40%">登陆日期</td>
+                    <td width="40%">描述</td>
                 </tr>
+                {volist name="logres" id="vo"}
                 <tr>
-                    <td>上传文件最大限制</td>
-                    <td></td>
+                    <td width="20%">{$vo.ip}</td>
+                    <td width="40%">{$vo.logintime|date="Y/m/d H:i:s",###}</td>
+                    <td width="40%">{$vo.msg}</td>
                 </tr>
-                <tr>
-                    <td>脚本占用最大内存</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>POST提交最大限制</td>
-                    <td></td>
-                </tr>
+                {/volist}
             </table>
         </div>
     </div>
@@ -113,12 +109,12 @@
 <script src="__ADMIN__/custom/js/admin.js"></script>
 <script>
     //JavaScript代码区域
-    layui.use(['layer','element'], function () {
+    layui.use(['layer', 'element'], function () {
         var layer = layui.layer, element = layui.element();
 
         //监听折叠
-        element.on('collapse(collapse)', function(data){
-            layer.msg('展开状态：'+ data.show);
+        element.on('collapse(collapse)', function (data) {
+            layer.msg('展开状态：' + data.show);
         });
 
         // you code ...

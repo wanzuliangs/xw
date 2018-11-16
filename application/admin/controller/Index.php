@@ -34,6 +34,8 @@ class Index extends Common
             'dbname' => config('database')['database'],
             // 数据库大小
         );
+        $logres = db('log')->order('logintime desc')->limit(10)->where('uid',session('loginid','','admin'))->select();
+        $this->assign('logres',$logres);
         $this->assign('system',$system);
         return view();
     }
