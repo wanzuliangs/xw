@@ -9,7 +9,7 @@ class Manager extends Validate
         'account'  => 'require|min:4|unique:admin',
         'password'   => 'require|min:6|confirm:repass',
         'repass'=>'require',
-        'code'=>'require|captcha'
+        'code'=>'require|captcha',
     ];
 
     protected $message  =   [
@@ -28,5 +28,7 @@ class Manager extends Validate
     protected $scene = [
         'edit'  =>  ['password','repass'],
         'login' => ['account'  => 'require|min:4','password' => 'require|min:6','code',],
+        'add' => ['account','password','repass'],
+        'editpass' => ['password','repass'],
     ];
 }

@@ -17,7 +17,7 @@ class Manager extends Common
         if (request()->isPost()) {
             $data = input('post.');
             $validate = validate('Manager');
-            if (!$validate->check($data)) {
+            if (!$validate->scene('add')->check($data)) {
                 $this->error($validate->getError());
             } else {
                 // 去掉确认密码
@@ -80,5 +80,40 @@ class Manager extends Common
         } else {
             $this->error('删除管理员失败!', 'index');
         }
+    }
+
+    /**
+     * 管理员密码修改
+     */
+    public function setpass()
+    {
+        if (request()->isPost()) {
+            $loginid = session('loginid', '', 'admin');
+            // 获取表单数据
+            $data = input('post.');
+            // 后端验证表单数据
+            $validate = validate('Manager');
+            if (!$validate->scene('editpass')->check($data)) {
+                $this->error($validate->getError());
+            }
+            // 判断旧密码是否正确
+            $data_admin = db('admin')->where('id',$loginid)->find();
+            if (md5($data['oldpassword']) != $data_admin['password']) {
+                $this->error('旧密码不正确!');
+            }
+            // 如果帐号存在，则去除
+            if (isset($data['account']) && !empty($data['account'])) {
+                unset($data['account']);
+            }
+            unset($data['oldpassword']);
+            unset($data['repass']);
+            $data['password'] = md5($data['password']);
+            $res = db('admin')->where('id',$loginid)->update($data);
+            if ($res) {
+                $this->success('密码修改成功!');
+            }
+            return;
+        }
+        return view();
     }
 }

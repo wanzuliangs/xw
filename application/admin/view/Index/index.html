@@ -17,7 +17,7 @@
             <li class="layui-nav-item layui-hide-xs">
                 <a href="javascript:;">
                     <i class="layui-icon" style="font-size: 1.2rem;">&#xe612;</i>
-                    管理员
+                    {$admin}
                 </a>
             </li>
             <li class="layui-nav-item">
@@ -27,7 +27,7 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">系统设置</a></dd>
-                    <dd><a href="">密码修改</a></dd>
+                    <dd><a href="{:url('manager/setpass')}" target="_content">密码修改</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item"><a href="{:url('login/logout')}">退出</a></li>
@@ -47,7 +47,7 @@
                     </dl>
                 </li>
 
-                <li class="layui-nav-item"><a href="system.html" target="_content">网站配置</a></li>
+                <li class="layui-nav-item"><a href="{:url('index/system')}" target="_content">网站配置</a></li>
             </ul>
         </div>
     </div>
