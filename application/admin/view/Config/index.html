@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>站点配置</title>
+    <link rel="stylesheet" href="__ADMIN__/vendor/layui/css/layui.css">
+    <link rel="stylesheet" href="__ADMIN__/custom/css/style.css">
+</head>
+<body style="padding:0 10px;">
+
+<div class="layui-container">
+    <form class="layui-form" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sitetitle"  placeholder="网站标题" autocomplete="off"
+                       class="layui-input" value="{notempty name='configInfo.sitetitle'}{$configInfo.sitetitle}{/notempty}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站关键词</label>
+            <div class="layui-input-block">
+                <input type="text" name="keyword"   placeholder="网站关键词"
+                       autocomplete="off" class="layui-input" value="{notempty name='configInfo.keyword'}{$configInfo.keyword}{/notempty}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站描述</label>
+            <div class="layui-input-block">
+                <input type="text" name="desc"  placeholder="网站描述"
+                       autocomplete="off" class="layui-input" value="{notempty name='configInfo.desc'}{$configInfo.desc}{/notempty}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司电话</label>
+            <div class="layui-input-inline">
+                <input type="text" name="tel"  placeholder="公司电话"
+                       autocomplete="off" class="layui-input" value="{notempty name='configInfo.tel'}{$configInfo.tel}{/notempty}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="addr"  placeholder="公司地址"
+                       autocomplete="off" class="layui-input" value="{notempty name='configInfo.addr'}{$configInfo.tel}{/notempty}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站状态</label>
+            <div class="layui-input-block">
+                <input type="checkbox" checked name="state" {$configInfo.state?"checked":""} lay-skin="switch" lay-text="ON|OFF" lay-filter="switchTest" value="1">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__ADMIN__/vendor/js/jquery.js"></script>
+<script src="__ADMIN__/vendor/layui/layui.js"></script>
+<script src="__ADMIN__/custom/js/admin.js"></script>
+<script>
+$(function() {
+    $(window.parent.document).find('#rtitle').text($("title").text()) ;
+    layui.use('form', function(){
+        var form = layui.form();
+        form.render();
+    });
+})
+</script>
+</body>
+</html>
