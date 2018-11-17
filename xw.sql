@@ -27,13 +27,50 @@ CREATE TABLE `x_admin` (
   `state` tinyint(1) DEFAULT '1' COMMENT '状态 0,1 (1为正常,1为锁定)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 /*Data for the table `x_admin` */
 
 LOCK TABLES `x_admin` WRITE;
 
-insert  into `x_admin`(`id`,`account`,`password`,`state`) values (1,'admin','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(3,'admins-pc','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(9,'aaaa','40be4e59b9a2a2b5dffb918c0e86b3d7',0),(10,'bbbb','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(14,'sgsgsgsg','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(15,'java','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(16,'kekaka','40be4e59b9a2a2b5dffb918c0e86b3d7',1);
+insert  into `x_admin`(`id`,`account`,`password`,`state`) values (1,'admin','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(3,'admins-pc','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(9,'aaaa','40be4e59b9a2a2b5dffb918c0e86b3d7',0),(10,'bbbb','40be4e59b9a2a2b5dffb918c0e86b3d7',0),(14,'sgsgsgsg','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(15,'java','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(16,'kekaka','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(17,'jakekings','40be4e59b9a2a2b5dffb918c0e86b3d7',1),(18,'wanrongrui','40be4e59b9a2a2b5dffb918c0e86b3d7',1);
+
+UNLOCK TABLES;
+
+/*Table structure for table `x_category` */
+
+DROP TABLE IF EXISTS `x_category`;
+
+CREATE TABLE `x_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL DEFAULT '' COMMENT '栏目名',
+  `pid` int(11) NOT NULL DEFAULT '0' COMMENT '上级栏目id',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='栏目表';
+
+/*Data for the table `x_category` */
+
+LOCK TABLES `x_category` WRITE;
+
+insert  into `x_category`(`id`,`name`,`pid`) values (6,'333',0),(5,'222',0),(4,'111',0),(7,'44',0);
+
+UNLOCK TABLES;
+
+/*Table structure for table `x_config` */
+
+DROP TABLE IF EXISTS `x_config`;
+
+CREATE TABLE `x_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cfg` text COMMENT '配置信息',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='站点配置表';
+
+/*Data for the table `x_config` */
+
+LOCK TABLES `x_config` WRITE;
+
+insert  into `x_config`(`id`,`cfg`) values (8,'{\"sitetitle\":\"网站后台管理系统\",\"img\":\"logo.gif\",\"keyword\":\"cms1\",\"desc\":\"网站后台管理系统test啊\",\"tel\":\"15336547896\",\"addr\":\"15336547896\",\"state\":\"1\",\"prompt\":\"网站正在维护中....\"}');
 
 UNLOCK TABLES;
 
@@ -45,15 +82,14 @@ CREATE TABLE `x_log` (
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT '登陆id',
   `ip` char(15) DEFAULT '' COMMENT '登陆ip',
   `logintime` int(10) DEFAULT '0' COMMENT '登陆时间',
-  `msg` varchar(80) DEFAULT '' COMMENT '登陆信息',
-  PRIMARY KEY (`uid`)
+  `msg` varchar(80) DEFAULT '' COMMENT '登陆信息'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='登陆日志表';
 
 /*Data for the table `x_log` */
 
 LOCK TABLES `x_log` WRITE;
 
-insert  into `x_log`(`uid`,`ip`,`logintime`,`msg`) values (1,'127.0.0.1',1542271493,'登陆成功');
+insert  into `x_log`(`uid`,`ip`,`logintime`,`msg`) values (1,'127.0.0.1',1542334979,'密码不正确'),(1,'127.0.0.1',1542334946,'登陆成功'),(1,'127.0.0.1',1542335641,'登陆成功'),(1,'127.0.0.1',1542335006,'密码不正确'),(1,'127.0.0.1',1542348341,'密码不正确'),(1,'127.0.0.1',1542348354,'密码不正确'),(1,'127.0.0.1',1542348465,'登陆成功'),(1,'127.0.0.1',1542348496,'登陆成功'),(1,'127.0.0.1',1542416418,'登陆成功'),(1,'127.0.0.1',1542435146,'登陆成功');
 
 UNLOCK TABLES;
 
