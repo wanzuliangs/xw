@@ -21,10 +21,25 @@ class Category extends Model
                 $tmp_arr['id'] = $v['id'];
                 $tmp_arr['name'] = $str . str_repeat('---',$lev) . $v['name'];
                 $tmp_arr['pid'] = $v['pid'];
+                $tmp_arr['sort'] = $v['sort'];
                 $arr[] = $tmp_arr;
                 self::getCate($list,$v['id'],$lev);
             }
         }
         return $arr;
+    }
+
+    /**
+     * 分类排序
+     * @param $data
+     */
+    public  function sort($data)
+    {
+        foreach($data as $k => $v) {
+            $tmp['id'] = $k;
+            $tmp['sort'] = $v;
+            $list[] = $tmp;
+        }
+        return $this->saveAll($list);
     }
 }

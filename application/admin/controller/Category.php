@@ -20,9 +20,32 @@ class Category extends Controller
             }
 
         }
-        $list = CateModel::all();
+        $list = CateModel::order('sort desc,id asc')->select();
         $res = CateModel::getCate($list);
-        $this->assign('catelist',$res);
+        $this->assign('catelist', $res);
         return view();
+    }
+
+    public function index()
+    {
+        $list = CateModel::order('sort desc,id asc')->select();
+        $res = CateModel::getCate($list);
+        $this->assign('catelist', $res);
+        return view();
+    }
+
+    /**
+     * 栏目排序
+     */
+    public function sort()
+    {
+        if (request()->isPost()) {
+           $data = input('post.');
+           $cateModel = new CateModel();
+           if ($cateModel->sort($data)) {
+                $this->success('排序成功!');
+           }
+        }
+
     }
 }
