@@ -17,6 +17,9 @@
             <div class="layui-input-inline">
                 <select name="pid" lay-verify="required">
                     <option value="0">顶级栏目</option>
+                    {volist name="catelist" id="vo"}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/volist}
                 </select>
             </div>
         </div>
