@@ -45,14 +45,15 @@ CREATE TABLE `x_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL DEFAULT '' COMMENT '栏目名',
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT '上级栏目id',
+  `sort` int(11) DEFAULT '100',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='栏目表';
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='栏目表';
 
 /*Data for the table `x_category` */
 
 LOCK TABLES `x_category` WRITE;
 
-insert  into `x_category`(`id`,`name`,`pid`) values (6,'333',0),(5,'222',0),(4,'111',0),(7,'44',0);
+insert  into `x_category`(`id`,`name`,`pid`,`sort`) values (11,'武汉',8,122),(10,'北京',0,103),(9,'湖南',0,102),(8,'湖北',0,100),(12,'荆州',8,120),(13,'赤壁',8,100),(14,'长沙',9,100),(16,'岳阳',9,100);
 
 UNLOCK TABLES;
 
@@ -89,7 +90,7 @@ CREATE TABLE `x_log` (
 
 LOCK TABLES `x_log` WRITE;
 
-insert  into `x_log`(`uid`,`ip`,`logintime`,`msg`) values (1,'127.0.0.1',1542334979,'密码不正确'),(1,'127.0.0.1',1542334946,'登陆成功'),(1,'127.0.0.1',1542335641,'登陆成功'),(1,'127.0.0.1',1542335006,'密码不正确'),(1,'127.0.0.1',1542348341,'密码不正确'),(1,'127.0.0.1',1542348354,'密码不正确'),(1,'127.0.0.1',1542348465,'登陆成功'),(1,'127.0.0.1',1542348496,'登陆成功'),(1,'127.0.0.1',1542416418,'登陆成功'),(1,'127.0.0.1',1542435146,'登陆成功');
+insert  into `x_log`(`uid`,`ip`,`logintime`,`msg`) values (1,'127.0.0.1',1542334979,'密码不正确'),(1,'127.0.0.1',1542334946,'登陆成功'),(1,'127.0.0.1',1542335641,'登陆成功'),(1,'127.0.0.1',1542335006,'密码不正确'),(1,'127.0.0.1',1542348341,'密码不正确'),(1,'127.0.0.1',1542348354,'密码不正确'),(1,'127.0.0.1',1542348465,'登陆成功'),(1,'127.0.0.1',1542348496,'登陆成功'),(1,'127.0.0.1',1542416418,'登陆成功'),(1,'127.0.0.1',1542435146,'登陆成功'),(1,'127.0.0.1',1542677049,'登陆成功');
 
 UNLOCK TABLES;
 
