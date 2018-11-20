@@ -42,4 +42,18 @@ class Category extends Model
         }
         return $this->saveAll($list);
     }
+
+    /**
+     * 获取子分类的id
+     * @param $id
+     */
+    public static function getChildrenIds($id) {
+        $res = self::field('id')->where('pid',$id)->select();
+        static $tmp = array();
+        foreach ($res as $v) {
+            $tmp[] = $v['id'];
+            self::getChildrenIds($v['id']);
+        }
+        return $tmp;
+    }
 }

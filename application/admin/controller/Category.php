@@ -5,7 +5,7 @@ namespace app\admin\controller;
 use think\Controller;
 use app\admin\model\Category as CateModel;
 
-class Category extends Controller
+class Category extends Common
 {
     public function add()
     {
@@ -46,6 +46,31 @@ class Category extends Controller
                 $this->success('排序成功!');
            }
         }
+    }
 
+    public function edit($id)
+    {
+        if (request()->isPost()) {
+            $data = input('post.');
+            $catIds = CateModel::getChildrenIds($id);
+            $catIds[] = $id;
+            if (!in_array($data['pid'],$catIds)) {
+                $res = CateModel::update(['id' => $id, 'name' => $data['name'], 'pid' => $data['pid']]);
+                if ($res) {
+                    $this->success('修改栏目分类成功!',url('index'));
+                }
+            } else {
+                $this->error('上级栏目不能选择当前分类和当前子分类!');
+            }
+        }
+        // 获取栏目分类
+        $list = CateModel::order('sort desc,id asc')->select();
+        $res = CateModel::getCate($list);
+        $catInfo = CateModel::get($id);
+        $this->assign([
+            'catelist' => $res,
+            'catInfo' => $catInfo,
+        ]);
+        return view();
     }
 }

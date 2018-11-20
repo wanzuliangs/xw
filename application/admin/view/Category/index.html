@@ -10,6 +10,14 @@
 </head>
 <body style="padding:0 10px;">
 <form action="{:url('category/sort')}" method="post">
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md3 layui-col-md-offset9">
+                <button type="submit" class="layui-btn layui-btn-primary">更新排序</button>
+                <a href="{:url('add')}" class="layui-btn layui-btn-warm">栏目添加</a>
+            </div>
+        </div>
+    </div>
 <table class="layui-table">
     <colgroup>
         <col>
@@ -36,13 +44,7 @@
     {/volist}
     </tbody>
 </table>
-    <div class="layui-container">
-        <div class="layui-row">
-            <div class="layui-col-md1 layui-col-md-offset11">
-                <button type="submit" class="layui-btn layui-btn-primary">更新排序</button>
-            </div>
-        </div>
-    </div>
+
 </form>
 <script src="__ADMIN__/vendor/js/jquery.js"></script>
 <script src="__ADMIN__/vendor/layui/layui.js"></script>
