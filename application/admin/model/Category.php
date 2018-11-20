@@ -7,10 +7,10 @@ use think\Model;
 class Category extends Model
 {
     // 获取栏目分类
-    public static function getCate($list,$pid = 0,$lev=-1)
+    public static function getCate($list, $pid = 0, $lev = -1)
     {
         static $arr = array();
-        $lev+=1;
+        $lev += 1;
         if ($lev == 0) {
             $str = '';
         } else {
@@ -19,11 +19,11 @@ class Category extends Model
         foreach ($list as $v) {
             if ($v['pid'] == $pid) {
                 $tmp_arr['id'] = $v['id'];
-                $tmp_arr['name'] = $str . str_repeat('---',$lev) . $v['name'];
+                $tmp_arr['name'] = $str . str_repeat('---', $lev) . $v['name'];
                 $tmp_arr['pid'] = $v['pid'];
                 $tmp_arr['sort'] = $v['sort'];
                 $arr[] = $tmp_arr;
-                self::getCate($list,$v['id'],$lev);
+                self::getCate($list, $v['id'], $lev);
             }
         }
         return $arr;
@@ -33,9 +33,9 @@ class Category extends Model
      * 分类排序
      * @param $data
      */
-    public  function sort($data)
+    public function sort($data)
     {
-        foreach($data as $k => $v) {
+        foreach ($data as $k => $v) {
             $tmp['id'] = $k;
             $tmp['sort'] = $v;
             $list[] = $tmp;
@@ -47,8 +47,9 @@ class Category extends Model
      * 获取子分类的id
      * @param $id
      */
-    public static function getChildrenIds($id) {
-        $res = self::field('id')->where('pid',$id)->select();
+    public static function getChildrenIds($id)
+    {
+        $res = self::field('id')->where('pid', $id)->select();
         static $tmp = array();
         foreach ($res as $v) {
             $tmp[] = $v['id'];
